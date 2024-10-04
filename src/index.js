@@ -68,19 +68,27 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/spinaci.jpg"
+        price="$10.00"
+      />
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        photoName="pizzas/funghi.jpg"
+        price="$15.00"
+      />
     </main>
   );
 }
 function Footer() {
-  const hour = new Date().getHours();
+  // const hour = new Date().getHours();
 
-  const OPEN_HOURS = 12;
-  const CLOSE_HOURS = 22;
-  const IS_OPEN = hour >= OPEN_HOURS && hour <= CLOSE_HOURS;
+  // const OPEN_HOURS = 12;
+  // const CLOSE_HOURS = 22;
+  // const IS_OPEN = hour >= OPEN_HOURS && hour <= CLOSE_HOURS;
   // console.log("🚀 ~ Footer ~ IS_OPEN:", IS_OPEN);
 
   // if (hour >= OPEN_HOURS && hour <= CLOSE_HOURS) {
@@ -96,13 +104,16 @@ function Footer() {
   );
 }
 
-function Pizza() {
+function Pizza(props) {
   return (
-    <>
-      <img src="pizzas/spinaci.jpg" alt="spinachi" />
-      <h2>Spinaci</h2>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </>
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h2>{props.name}</h2>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
+    </div>
   );
 }
 

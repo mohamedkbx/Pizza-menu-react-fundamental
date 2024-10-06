@@ -83,16 +83,16 @@ function Menu() {
     </main>
   );
 }
-function Pizza(props) {
-  if (props.pizzaObj.soldOut) return null;
+function Pizza({ pizzaObj }) {
+  if (pizzaObj.soldOut) return null;
 
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h2>{props.pizzaObj.name}</h2>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>${props.pizzaObj.price + 3}</span>
+        <h2>{pizzaObj.name}</h2>
+        <p>{pizzaObj.ingredients}</p>
+        <span>${pizzaObj.price + 3}</span>
       </div>
     </li>
   );
@@ -116,10 +116,10 @@ function Footer() {
   return <footer className="footer">{IS_OPEN && <Order closeHour={CLOSE_HOURS} />}</footer>;
 }
 
-function Order(props) {
+function Order({ closeHour }) {
   return (
     <div className="order">
-      <p>We are open until {props.closeHour}:00. Come visit us</p>
+      <p>We are open until {closeHour}:00. Come visit us</p>
       <button className="btn">Order </button>
     </div>
   );

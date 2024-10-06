@@ -3,10 +3,18 @@ import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
 import "./index.css";
 
+const skills = [
+  { id: 1, skill: "HTML", level: "Advanced", color: "#E34C26" },
+  { id: 2, skill: "CSS", level: "Intermediate", color: "#264de4" },
+  { id: 3, skill: "JavaScript", level: "Advanced", color: "#F0DB4F" },
+  { id: 4, skill: "React", level: "Intermediate", color: "#61DBFB" },
+  { id: 5, skill: "Node.js", level: "Beginner", color: "#68A063" },
+];
+
 function App() {
   return (
     <div className="card">
-      <Avatar photo="pizzas/profile-pic.png" />
+      <Avatar photo="pizzas/profile-pic.png" alt="profile" />
       <div className="data">
         <Intro name="Mohamed" title="Front End Developer" />
         {/* Should contain one Skill component
@@ -21,7 +29,7 @@ function App() {
 function Avatar(props) {
   return (
     <div className="avatar">
-      <img className="avatar" src={props.photo} />
+      <img className="avatar" src={props.photo} alt={props.alt} />
     </div>
   );
 }
@@ -35,23 +43,26 @@ function Intro(props) {
   );
 }
 
-function SkillList(props) {
+function SkillList() {
   return (
-    <div className="skill-list ">
-      <Skill skill="html" background="red" />
-      <Skill skill="css" background="blue" />
-      <Skill skill="JavaScript" background="orange" />
-      <Skill skill="React" background="white" />
-      <Skill skill="Redux" background="red" />
-    </div>
+    <ul className="skill-list ">
+      {skills.map((skillObj) => {
+        return <Skill skillObj={skillObj} key={skillObj.id} />;
+      })}
+    </ul>
   );
 }
 
-function Skill(props) {
+function Skill({ skillObj, key }) {
   return (
-    <div className="skill">
-      <p style={{ backgroundColor: props.background }}>{props.skill}</p>
-    </div>
+    <li className="skill" style={{ backgroundColor: skillObj.color }} key={key}>
+      <span>{skillObj.skill}</span>
+      <span>
+        {skillObj.level === "Advanced" && "💪"}
+        {skillObj.level === "Intermediate" && "👍"}
+        {skillObj.level === "Beginner" && "👶"}
+      </span>
+    </li>
   );
 }
 

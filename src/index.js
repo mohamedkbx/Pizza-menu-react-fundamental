@@ -83,28 +83,9 @@ function Menu() {
     </main>
   );
 }
-function Footer() {
-  const hour = new Date().getHours();
-
-  const OPEN_HOURS = 12;
-  const CLOSE_HOURS = 22;
-  const IS_OPEN = hour >= OPEN_HOURS && hour <= CLOSE_HOURS;
-  console.log("🚀 ~ Footer ~ IS_OPEN:", IS_OPEN);
-
-  return (
-    <footer className="footer">
-      {/* {new Date().toLocaleTimeString()} We are currently open */}
-      {IS_OPEN && (
-        <div className="order">
-          <p>We are open until {CLOSE_HOURS}:00. Come visit us</p>
-          <button className="btn">Order </button>
-        </div>
-      )}
-    </footer>
-  );
-}
-
 function Pizza(props) {
+  if (props.pizzaObj.soldOut) return null;
+
   return (
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
@@ -114,6 +95,33 @@ function Pizza(props) {
         <span>${props.pizzaObj.price + 3}</span>
       </div>
     </li>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+
+  const OPEN_HOURS = 12;
+  const CLOSE_HOURS = 22;
+  const IS_OPEN = hour >= OPEN_HOURS && hour <= CLOSE_HOURS;
+  console.log("🚀 ~ Footer ~ IS_OPEN:", IS_OPEN);
+
+  if (!IS_OPEN) {
+    return (
+      <p>
+        We are happy to welcome yot Betwwn {OPEN_HOURS} and {CLOSE_HOURS}
+      </p>
+    );
+  }
+  return <footer className="footer">{IS_OPEN && <Order closeHour={CLOSE_HOURS} />}</footer>;
+}
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>We are open until {props.closeHour}:00. Come visit us</p>
+      <button className="btn">Order </button>
+    </div>
   );
 }
 

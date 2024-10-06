@@ -1,5 +1,9 @@
 # React Fundamentals Project
 
+## **Live Demo**
+
+Check out the live demo of this project here: [Live Demo](https://pizaa-menu.netlify.app/)
+
 This project focuses on mastering the core concepts of React, particularly in:
 
 - Component creation and reuse
@@ -59,3 +63,7 @@ Instead of tightly coupling CSS with components, you can use CSS Modules, styled
 ---
 
 By adhering to React’s principles of component-based architecture, immutable props, and separation of concerns, this project will help you create scalable, maintainable, and efficient applications.
+
+## **Live Demo**
+
+Check out the live demo of this project here: [Live Demo](https://pizaa-menu.netlify.app/)
